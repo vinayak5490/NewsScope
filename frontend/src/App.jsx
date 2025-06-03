@@ -8,21 +8,22 @@ function App() {
   const [et, setEt] = useState([]);
   const [bt, setBt] = useState([]);
   const [ht, setHt] = useState([]);
+  const base = import.meta.env.VITE_API_BASE_URL;
 
   useEffect(()=>{
-    fetch('http://localhost:8000/headlines/timesofindia')
+    fetch(`${base}/headlines/timesofindia`)
     .then(res=>res.json())
     .then(data=>setToi(data.headlines));
 
-    fetch('http://localhost:8000/headlines/economictimes')
+    fetch(`${base}/headlines/economictimes`)
       .then(res => res.json())
       .then(data => setEt(data.headlines));
 
-    fetch('http://localhost:8000/headlines/businesstoday')
+    fetch(`${base}/headlines/businesstoday`)
       .then(res => res.json())
       .then(data => setBt(data.headlines));
 
-    fetch('http://localhost:8000/headlines/thehindus')
+    fetch(`${base}/headlines/thehindus`)
        .then(res=>res.json())
        .then(data=> setHt(data.headlines));
   }, []);
